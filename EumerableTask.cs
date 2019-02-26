@@ -78,7 +78,7 @@ namespace PadawansTask15
             List<long> result = new List<long>();
             foreach (var e in data)
             {
-                result.Add((long)Math.Pow(e, 2));
+                result.Add((long)(e) * (long)(e));
             }
             return (IEnumerable<long>)result;
         }
