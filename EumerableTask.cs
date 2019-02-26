@@ -21,9 +21,9 @@ namespace PadawansTask15
             // TODO : Implement GetUppercaseStrings
             // throw new NotImplementedException();
             List<string> result = new List<string>();
-            foreach(var d in data)
+            foreach (var d in data)
             {
-                if(d == "" || d == null)
+                if (d == "" || d == null)
                 {
                     result.Add(d);
                     continue;
@@ -31,7 +31,7 @@ namespace PadawansTask15
                 result.Add(d.ToUpper());
             }
             return (IEnumerable<string>)result;
-            
+
         }
 
         /// <summary> Transforms an each string from sequence to its length.</summary>
@@ -49,9 +49,9 @@ namespace PadawansTask15
             // TODO : Implement GetStringsLength
             //throw new NotImplementedException();
             List<int> result = new List<int>();
-            foreach(var e in data)
+            foreach (var e in data)
             {
-                if(e == "" || e == null)
+                if (e == "" || e == null)
                 {
                     result.Add(0);
                     continue;
@@ -76,9 +76,9 @@ namespace PadawansTask15
             // TODO : Implement GetSquareSequence
             //throw new NotImplementedException();
             List<long> result = new List<long>();
-            foreach(var e in data)
+            foreach (var e in data)
             {
-                result.Add(e*e);
+                result.Add((long)Math.Pow(e, 2));
             }
             return (IEnumerable<long>)result;
         }
@@ -104,20 +104,28 @@ namespace PadawansTask15
             //throw new NotImplementedException();
             if (prefix == null)
                 throw new ArgumentNullException();
-            if(prefix == "")
-            {
-                return data;
-            }
             List<string> result = new List<string>();
-            foreach(var e in data)
+            if (prefix == "")
             {
-                if(e.Contains(prefix.ToUpper()) || e.Contains(prefix.ToLower()))
+                foreach (var e in data)
+                {
+                    if (e != null)
+                        result.Add(e);
+                }
+                return (IEnumerable<string>)result;
+            }
+            foreach (var e in data)
+            {
+                if (e == null)
+                {
+                    continue;
+                }
+                if (e.StartsWith(prefix.ToUpper()) || e.StartsWith(prefix.ToLower()))
                 {
                     result.Add(e);
                 }
             }
             return (IEnumerable<string>)result;
-
         }
 
         /// <summary> Finds the 3 largest numbers from a sequence.</summary>
@@ -172,8 +180,10 @@ namespace PadawansTask15
             // TODO : Implement GetSumOfAllIntegers
             //throw new NotImplementedException();
             List<int> result = new List<int>();
-            foreach(var e in data)
+            foreach (var e in data)
             {
+                if (e == null)
+                    continue;
                 Type t = e.GetType();
                 if (t.Equals(typeof(int)))
                     result.Add((int)e);
